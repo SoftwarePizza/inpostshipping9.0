@@ -30,7 +30,7 @@ use InPost\Shipping\ChoiceProvider\ShippingServiceChoiceProvider;
 use InPost\Shipping\Presenter\CarrierPresenter;
 use InPost\Shipping\Presenter\Store\PresenterInterface;
 use InPost\Shipping\ShipX\Resource\Service;
-use InPostCarrierModel;
+require_once _PS_MODULE_DIR_.'inpostshipping/classes/InPostCarrierModel.php';
 
 class ServicesModule implements PresenterInterface
 {
@@ -74,7 +74,7 @@ class ServicesModule implements PresenterInterface
     {
         $list = [];
 
-        foreach (InPostCarrierModel::getNonDeletedCarriers() as $carrier) {
+    foreach (\InPostCarrierModel::getNonDeletedCarriers() as $carrier) {
             $list[$carrier->id] = $this->carrierPresenter->present($carrier);
         }
 

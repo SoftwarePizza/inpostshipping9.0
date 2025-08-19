@@ -31,7 +31,7 @@ use InPost\Shipping\Handler\CronJobsHandler;
 use InPost\Shipping\Install\Tabs;
 use InPost\Shipping\Presenter\Store\PresenterInterface;
 use InPost\Shipping\Translations\Translations;
-use InPostDispatchPointModel;
+require_once _PS_MODULE_DIR_.'inpostshipping/classes/InPostDispatchPointModel.php';
 
 class ContextModule implements PresenterInterface
 {
@@ -64,8 +64,8 @@ class ContextModule implements PresenterInterface
             'context' => [
                 'ajaxController' => $this->context->link->getAdminLink(Tabs::AJAX_CONTROLLER_NAME),
                 'dispatchPointsController' => $this->context->link->getAdminLink(Tabs::DISPATCH_POINT_CONTROLLER_NAME),
-                'newDispatchPointUrl' => $this->context->link->getAdminLink(Tabs::DISPATCH_POINT_CONTROLLER_NAME, true, [], [
-                    'add' . InPostDispatchPointModel::$definition['table'] => true,
+                    'newDispatchPointUrl' => $this->context->link->getAdminLink(Tabs::DISPATCH_POINT_CONTROLLER_NAME, true, [], [
+                        'add' . \InPostDispatchPointModel::$definition['table'] => true,
                 ]),
                 'locale' => $this->context->language->iso_code,
                 'currency' => [
