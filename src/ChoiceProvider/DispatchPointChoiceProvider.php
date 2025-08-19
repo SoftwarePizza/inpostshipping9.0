@@ -25,7 +25,7 @@
 namespace InPost\Shipping\ChoiceProvider;
 
 use InPost\Shipping\Presenter\DispatchPointPresenter;
-use InPostDispatchPointModel;
+require_once _PS_MODULE_DIR_.'inpostshipping/classes/InPostDispatchPointModel.php';
 use PrestaShopCollection;
 
 class DispatchPointChoiceProvider implements ChoiceProviderInterface
@@ -59,7 +59,7 @@ class DispatchPointChoiceProvider implements ChoiceProviderInterface
     protected function initCollection()
     {
         if (!isset($this->dispatchPoints)) {
-            $this->dispatchPoints = (new PrestaShopCollection(InPostDispatchPointModel::class))
+            $this->dispatchPoints = (new PrestaShopCollection(\InPostDispatchPointModel::class))
                 ->where('deleted', '=', 0);
         }
 
